@@ -31,16 +31,16 @@ class Menu(Resource):
                 'type': 'router',
                 'path': '/plugin',
                 'params': {
-                    'src': f'/plugin/{plugin["name"]}'
+                    'src': f'/ui/gaoqi/{plugin["project_name"]}'
                 }
             })
         # append mock menu
-        menu.append({
-                'name': 'PluginX',
-                'type': 'router',
-                'path': '/plugin',
-                'params': {
-                    'src': '/plugin/demo'
-                }
-            })
+        # menu.append({
+        #         'name': 'PluginX',
+        #         'type': 'router',
+        #         'path': '/plugin',
+        #         'params': {
+        #             'src': '/plugin/demo'
+        #         }
+        #     })
         return context.make_ok_response(menu=menu)
