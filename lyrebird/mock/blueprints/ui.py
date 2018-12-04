@@ -46,32 +46,32 @@ def data_manager():
     return render_with_plugin('data_manager_v2.html')
 
 
-@ui.route('/plugin/base/<string:name>')
-def plugin_base(name):
-    report_handler.page_in(name)
-    plugin = plugin_manager.web_plugins.get(name)
-    if not plugin:
-        return "Plugin not found"
+# @ui.route('/plugin/base/<string:name>')
+# def plugin_base(name):
+#     report_handler.page_in(name)
+#     plugin = plugin_manager.web_plugins.get(name)
+#     if not plugin:
+#         return "Plugin not found"
     
-    web_content = plugin.index()
-    soup = BeautifulSoup(web_content, 'html.parser')
+#     web_content = plugin.index()
+#     soup = BeautifulSoup(web_content, 'html.parser')
 
-    # set all javascripts into script block
-    all_scripts = []
-    for javascript_tag in soup.find_all('script'):
-        all_scripts.append(javascript_tag)
-        javascript_tag.extract()
-    # set all css link into header
-    all_css = []
-    for css_tag in soup.find_all('link'):
-        all_css.append(css_tag)
-        css_tag.extract()
-    return render_with_plugin('plugin.html', current_plugin={'name': name},
-                              plugin_content=str(soup),
-                              plugin_javascript=all_scripts,
-                              plugin_css=all_css)
+#     # set all javascripts into script block
+#     all_scripts = []
+#     for javascript_tag in soup.find_all('script'):
+#         all_scripts.append(javascript_tag)
+#         javascript_tag.extract()
+#     # set all css link into header
+#     all_css = []
+#     for css_tag in soup.find_all('link'):
+#         all_css.append(css_tag)
+#         css_tag.extract()
+#     return render_with_plugin('plugin.html', current_plugin={'name': name},
+#                               plugin_content=str(soup),
+#                               plugin_javascript=all_scripts,
+#                               plugin_css=all_css)
 
-@ui.route('/gaoqi/<string:name>')
+@ui.route('/plugin/<string:name>')
 def plugin_v2_base(name):
     report_handler.page_in(name)
     plugin = plugin_manager.plugins.get(name)

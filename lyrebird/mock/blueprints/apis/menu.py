@@ -31,7 +31,7 @@ class Menu(Resource):
                 'type': 'router',
                 'path': '/plugin',
                 'params': {
-                    'src': f'/ui/gaoqi/{plugin["project_name"]}'
+                    'src': f'/ui/plugin/{plugin["project_name"]}'
                 }
             })
         # append mock menu
